@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta charset="utf-8" name="viewport"
+          content="width=device-width, initial-scale=1"/>
+    <title>EMPLOYEE LIST</title>
+
+</h:head>
+<h:body>
+        <h:outputText value="Employe List"></h:outputText>
+
+    <h2>
+        <h:outputText value="Employee List"/>
+        <h:outputStylesheet library="webjars" name = "bootstrap/5.3.3/css/bootstrap.min.css"  />
+    </h2>
+    <h:form>
+        <h:commandButton action="#{employeeBean.nouveau()}" value="Add Employee"/>
+
+        <h:dataTable value="#{employeeBean.obtenirEmployee()}" var="employee"
+                     class="table table-striped">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                <h:outputText value="#{employee.id}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nom</f:facet>
+                <h:outputText value="#{employee.name}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">email</f:facet>
+                <h:outputText value="#{employee.email}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Skills</f:facet>
+                <h:outputText value="#{employee.skills}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Project</f:facet>
+                <h:outputText value="#{employee.projet}"></h:outputText>
+            </h:column>
+
+
+
+            <f:facet name="footer">
+                <h:commandButton action="#{employeeBean.eliminer(employee.id)}" value="Eliminer"/>
+            </f:facet>
+
+        </h:dataTable>
+    </h:form>
+</h:body>
+</html>
